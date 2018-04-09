@@ -1,20 +1,13 @@
 # Laravel homestead-docker
-Create a homestead docker container for your development env.
-(Adapted from laravel homestead provisionning script)
+为你开发环境，创建一个homestead docker 容器，
+(适配laravel homestead provisionning script脚本)
 
 ### Install docker && docker compose
 please refer to these tutorials:
-* install docker (https://docs.docker.com/installation/ubuntulinux/)
-```shell
-curl -sSL https://get.docker.com/ | sh
-```
-* install docker compose (https://docs.docker.com/compose/install/)
-```shell
-sudo curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+* 安装docker (https://blog.jayway.com/2017/04/19/running-docker-on-bash-on-windows/)
 
-### Pull homestead image
+
+### 拉取 homestead image
 ```shell
 docker pull shincoder/homestead:php7.1
 ```
@@ -31,6 +24,10 @@ There are only two containers to run. web container ( includes everything except
 and mariadb container.
 ```shell
 sudo docker-compose up -d
+# or
+docker-compose up web -d
+# or 
+docker-compose up mysql -d
 ```
 
 ### SSH into the container (password: secret):
@@ -47,7 +44,7 @@ sudo ./serve.sh myapp.dev /apps/myapp/public
 sudo supervisorctl restart all
 ```
 
-**In the host**, update ``` /etc/hosts ``` to include your app domain:
+**In the host**, update ``` hosts ``` to include your app domain:
 ```shell
 127.0.0.1               myapp.dev
 ```
